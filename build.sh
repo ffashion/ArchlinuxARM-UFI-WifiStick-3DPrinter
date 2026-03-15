@@ -239,6 +239,7 @@ function config_rootfs()
     cp -p /usr/bin/qemu-aarch64-static $livecd/bin/qemu-aarch64-static
 
     # Initialize environment
+    $chlivedo "sed -i '/^\[options\]/a DisableSandbox' /etc/pacman.conf"
     $chlivedo "pacman-key --init"
     $chlivedo "pacman-key --populate archlinuxarm"
     $chlivedo "pacman --noconfirm -Syyu"
