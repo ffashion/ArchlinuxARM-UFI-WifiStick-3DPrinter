@@ -268,6 +268,7 @@ function config_rootfs()
     cp -p  config/klipper.conf $rootfs/etc/klipper/klipper.conf
 
     cp -p config/usb_host.service $rootfs/usr/lib/systemd/system
+    cp -p config/hotspot.service $rootfs/usr/lib/systemd/system
 
     # Configure rootfs
     $chrootdo "useradd -d /home/alarm -m -U alarm"
