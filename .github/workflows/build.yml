@@ -3,11 +3,23 @@ name: archlinux arm build nightly
 on:
   repository_dispatch:
   workflow_dispatch:
+    inputs:
+      wifi_ssid:
+        description: 'WiFi SSID (留空默认为ffashion)'
+        required: false
+        default: 'ffashion'
+      wifi_password:
+        description: 'WiFi Password (留空默认为)'
+        required: false
+        default: 'ffashionffashion'
   push:
   pull_request:
   schedule:
     - cron: '0 0 * * *'
 
+env:
+    DEFAULT_WIFI_SSID: 'ffashion'
+    DEFAULT_WIFI_PASSWORD: 'ffashionffashion'
 jobs:
   build:
     strategy:
@@ -25,6 +37,18 @@ jobs:
         run: |
           echo RELEASE=$(date +%Y\/%m\/%d) >> $GITHUB_ENV
 
+      - name: Set WiFi environment variables
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            SSID="${{ github.event.inputs.wifi_ssid }}"
+            PASS="${{ github.event.inputs.wifi_password }}"
+          else
+            SSID="${{ env.DEFAULT_WIFI_SSID }}"
+            PASS="${{ env.DEFAULT_WIFI_PASSWORD }}"
+          fi
+          echo "WIFI_SSID=$SSID" >> $GITHUB_ENV
+          echo "WIFI_PASSWORD=$PASS" >> $GITHUB_ENV
+
       - name: Install dependencies
         run: |
           sudo apt update
@@ -37,7 +61,9 @@ jobs:
         run: git submodule update --init --depth=1
 
       - name: Build packets
-        run: sudo bash -x ${{github.workspace}}/build.sh
+        run: |
+              sudo WIFI_SSID="$WIFI_SSID" WIFI_PASSWORD="$WIFI_PASSWORD" bash -x ${{github.workspace}}/build.sh
+
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v4

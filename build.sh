@@ -302,6 +302,8 @@ function generate_checksum()
 
 set -ev
 mkdir -p build
+
+echo $WIFI_SSID $WIFI_PASSWORD
 prepare_livecd
 prepare_rootfs
 config_rootfs
