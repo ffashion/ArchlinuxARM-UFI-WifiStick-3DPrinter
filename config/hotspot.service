@@ -14,8 +14,6 @@ ExecStart=/usr/bin/nmcli c up 3dprinter
 
 ExecStartPost=/usr/bin/systemctl disable hotspot.service
 
-ExecStop=/usr/bin/nmcli c down 3dprinter
-ExecStop=/usr/bin/nmcli c delete 3dprinter
 
 [Install]
 WantedBy=multi-user.target
