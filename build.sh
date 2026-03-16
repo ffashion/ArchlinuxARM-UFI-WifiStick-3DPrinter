@@ -271,9 +271,11 @@ function config_rootfs()
     cp -p config/nginx.conf $rootfs/etc/nginx/
 
     cp -p config/klipper.conf $rootfs/${MOONRAKER_RUNTIME_HOME}/config/klipper.conf
+    $chrootdo "chown klipper: ${MOONRAKER_RUNTIME_HOME}/config/klipper.conf"
 
     cp -p config/moonraker/moonraker.env $rootfs/${MOONRAKER_RUNTIME_HOME}/systemd/moonraker.env
     cp -p config/moonraker.conf $rootfs/${MOONRAKER_RUNTIME_HOME}/config/moonraker.conf
+    $chrootdo "chown klipper: ${MOONRAKER_RUNTIME_HOME}/config/moonraker.conf"
 
     cp -p config/moonraker/moonraker.service $rootfs/usr/lib/systemd/system
     cp -p config/klipper/klipper.service $rootfs/usr/lib/systemd/system
