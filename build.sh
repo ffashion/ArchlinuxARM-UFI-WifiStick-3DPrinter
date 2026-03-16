@@ -281,6 +281,7 @@ function config_rootfs()
     cp -p config/usb_host.service $rootfs/usr/lib/systemd/system
     cp -p config/hotspot.service $rootfs/usr/lib/systemd/system
 
+    cp -p config/systemd-tmpfiles.conf $rootfs/usr/lib/tmpfiles.d/3dprinter.conf
     cp -p scripts/* $rootfs/root/
 
     # Configure rootfs
