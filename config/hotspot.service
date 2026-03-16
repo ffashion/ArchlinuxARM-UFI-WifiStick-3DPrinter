@@ -6,7 +6,8 @@ Wants=network-online.target
 Requires=NetworkManager.service
 
 [Service]
-Type=simple
+Type=oneshot
+RemainAfterExit=yes
 
 ExecStart=/usr/bin/nmcli c delete 3dprinter || true
 
