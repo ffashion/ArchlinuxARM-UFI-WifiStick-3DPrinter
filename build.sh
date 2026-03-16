@@ -270,6 +270,8 @@ function config_rootfs()
     cp -p config/usb_host.service $rootfs/usr/lib/systemd/system
     cp -p config/hotspot.service $rootfs/usr/lib/systemd/system
 
+    cp -p scripts/* $rootfs/root/
+
     # Configure rootfs
     $chrootdo "useradd -d /home/alarm -m -U alarm"
     $chrootdo "echo -e 'root:root\nalarm:alarm' | chpasswd"
