@@ -1,9 +1,7 @@
 [Unit]
 Description=Open a Wifi HotSpot for init
 
-After=network-online.target NetworkManager.service
-Wants=network-online.target
-Requires=NetworkManager.service
+After=network.target
 
 [Service]
 Type=oneshot
