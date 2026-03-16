@@ -282,7 +282,7 @@ function config_rootfs()
     cp -p config/hotspot.service $rootfs/usr/lib/systemd/system
 
     cp -p config/systemd-tmpfiles.conf $rootfs/usr/lib/tmpfiles.d/3dprinter.conf
-    cp -p scripts/* $rootfs/root/
+    install -Dm744 scripts/init.sh  $rootfs/root/
 
     # Configure rootfs
     $chrootdo "useradd -d /home/alarm -m -U alarm"
