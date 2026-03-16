@@ -262,10 +262,21 @@ function config_rootfs()
     cp -p /usr/bin/qemu-aarch64-static $rootfs/bin/qemu-aarch64-static
     cp -p config/resize2fs.service $rootfs/usr/lib/systemd/system
 
-    cp -p config/moonraker.conf $rootfs/etc/klipper/
+    # printer part
+    export MOONRAKER_HOME=/opt/moonraker
+    export MOONRAKER_RUNTIME_HOME=/var/opt/moonraker
+    export KLIPPER_HOME=/opt/klipper
+
+
     cp -p config/nginx.conf $rootfs/etc/nginx/
 
-    cp -p  config/klipper.conf $rootfs/etc/klipper/klipper.conf
+    cp -p config/klipper.conf $rootfs/${MOONRAKER_RUNTIME_HOME}/config/klipper.conf
+
+    cp -p config/moonraker/moonraker.env $rootfs/${MOONRAKER_RUNTIME_HOME}/systemd/moonraker.env
+    cp -p config/moonraker.conf $rootfs/${MOONRAKER_RUNTIME_HOME}/config/moonraker.conf
+
+    cp -p config/moonraker/moonraker.service $rootfs/usr/lib/systemd/system
+    cp -p config/klipper/klipper.service $rootfs/usr/lib/systemd/system
 
     cp -p config/usb_host.service $rootfs/usr/lib/systemd/system
     cp -p config/hotspot.service $rootfs/usr/lib/systemd/system
