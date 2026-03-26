@@ -1,0 +1,32 @@
+From 9cfbecda6a2db4f9c6cc7f0d95bd4aa65a426943 Mon Sep 17 00:00:00 2001
+From: fashion <fashion@openbfdev.com>
+Date: Thu, 26 Mar 2026 21:38:48 +0800
+Subject: [PATCH] msm8916 defconfig: add can support
+
+---
+ arch/arm64/configs/msm8916_defconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/configs/msm8916_defconfig b/arch/arm64/configs/msm8916_defconfig
+index b144e991a446..a437fd2e80bb 100644
+--- a/arch/arm64/configs/msm8916_defconfig
++++ b/arch/arm64/configs/msm8916_defconfig
+@@ -102,7 +102,6 @@ CONFIG_SETEND_EMULATION=y
+ # CONFIG_ARM64_CNP is not set
+ # CONFIG_ARM64_PTR_AUTH is not set
+ # CONFIG_ARM64_AMU_EXTN is not set
+-# CONFIG_ARM64_TLB_RANGE is not set
+ # CONFIG_ARM64_BTI is not set
+ # CONFIG_ARM64_E0PD is not set
+ # CONFIG_ARM64_SVE is not set
+@@ -587,6 +586,7 @@ CONFIG_QRTR_MHI=m
+ CONFIG_CGROUP_NET_PRIO=y
+ CONFIG_BPF_STREAM_PARSER=y
+ CONFIG_NET_PKTGEN=m
++CONFIG_CAN=y
+ CONFIG_BT=y
+ CONFIG_BT_RFCOMM=m
+ CONFIG_BT_RFCOMM_TTY=y
+-- 
+2.43.0
+

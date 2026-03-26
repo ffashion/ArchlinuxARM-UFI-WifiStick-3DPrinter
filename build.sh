@@ -44,6 +44,9 @@ function build_lk2nd()
 
 function build_linux()
 {
+    # cd linux && git am ../patch/linux/*.patch
+    # git format-patch -1 <commit-hash>
+    # git am patch/*.patch
     for file in patch/linux/*.patch; do
         patch -N -p 1 -d linux <$file
     done
