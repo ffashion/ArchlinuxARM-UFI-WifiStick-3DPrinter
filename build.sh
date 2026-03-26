@@ -237,7 +237,8 @@ function build_aur_package_rootfs()
 function config_rootfs()
 {
     chlivedo="arch-chroot $livecd qemu-aarch64-static /bin/bash -c"
-    chrootdo="arch-chroot $rootfs qemu-aarch64-static /bin/bash -c"
+    # chrootdo="arch-chroot $rootfs qemu-aarch64-static /bin/bash -c"
+    chrootdo="systemd-nspawn -D $rootfs qemu-aarch64-static /bin/bash -c"
 
     cp -p /usr/bin/qemu-aarch64-static $livecd/bin/qemu-aarch64-static
 
