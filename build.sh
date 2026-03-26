@@ -291,9 +291,13 @@ function config_rootfs()
     install -Dm744 scripts/init.sh  $rootfs/root/
 
     # Configure rootfs
-    $chrootdo "useradd -d /home/alarm -m -U alarm"
-    $chrootdo "echo -e 'root:root\nalarm:alarm' | chpasswd"
-    $chrootdo "usermod -a -G wheel alarm"
+    $chrootdo "usermod -s /bin/bash klipper"
+    $chrootdo "mkdir -p /home/klipper"
+    $chrootdo "chown klipper: /home/klipper"
+    $chrootdo "usermod -d /home/klipper klipper"
+    $chrootdo "echo -e 'root:root\nklipper:klipper' | chpasswd"
+    $chrootdo "usermod -a -G wheel klipper"
+
     $chrootdo "systemctl enable $(cat config/services.conf)"
     $chrootdo "pacman-key --init"
     $chrootdo "pacman-key --populate archlinuxarm"

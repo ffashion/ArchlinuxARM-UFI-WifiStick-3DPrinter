@@ -2,4 +2,4 @@
 
 ## Default User
 - root passwd: root
-- alarm passwd: alarm
+- klipper passwd: klipper
