@@ -9,3 +9,5 @@ nmcli c add type wifi con-name ${WIFI_SSID} ifname wlan0 ssid ${WIFI_SSID} wifi-
 nmcli c down 3dprinter
 
 systemctl disable hotspot
+
+systemctl enable usb_host
