@@ -46,7 +46,8 @@ function build_linux()
 {
     # cd linux && git am ../patch/linux/*.patch
     # git format-patch -1 <commit-hash>
-    # git am patch/*.patch
+# Commit a Patch Config in Linux
+# cp arch/arm64/configs/msm8916_defconfig .config && make ARCH=arm64 menuconfig && make ARCH=arm64 savedefconfig && cp deconfig arch/arm64/configs/msm8916_defconfig
     for file in patch/linux/*.patch; do
         patch -N -p 1 -d linux <$file
     done

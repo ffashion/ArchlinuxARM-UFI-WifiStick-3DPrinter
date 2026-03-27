@@ -1,0 +1,24 @@
+From 42366ab2b5dcb801045e94a2168ce980c234d20a Mon Sep 17 00:00:00 2001
+From: fashion <fashion@openbfdev.com>
+Date: Sat, 28 Mar 2026 03:26:16 +0800
+Subject: [PATCH] msm8916 defconfig: add gs can supoort
+
+---
+ arch/arm64/configs/msm8916_defconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/configs/msm8916_defconfig b/arch/arm64/configs/msm8916_defconfig
+index a437fd2e80bb..d5e34ab6991a 100644
+--- a/arch/arm64/configs/msm8916_defconfig
++++ b/arch/arm64/configs/msm8916_defconfig
+@@ -669,6 +669,7 @@ CONFIG_VXLAN=m
+ CONFIG_TUN=m
+ CONFIG_VETH=m
+ CONFIG_RMNET=m
++CONFIG_CAN_GS_USB=y
+ CONFIG_USB_USBNET=m
+ CONFIG_WCN36XX=m
+ CONFIG_WWAN=y
+-- 
+2.43.0
+
