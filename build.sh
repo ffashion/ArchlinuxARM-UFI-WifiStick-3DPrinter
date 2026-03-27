@@ -297,6 +297,7 @@ function config_rootfs()
     $chrootdo "usermod -d /home/klipper klipper"
     $chrootdo "echo -e 'root:root\nklipper:klipper' | chpasswd"
     $chrootdo "usermod -a -G wheel klipper"
+    $chrootdo "echo '%wheel ALL=(ALL:ALL) ALL' >> /etc/sudoers"
 
     $chrootdo "systemctl enable $(cat config/services.conf)"
     $chrootdo "pacman-key --init"
